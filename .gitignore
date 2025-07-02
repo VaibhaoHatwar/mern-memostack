@@ -1,23 +1,17 @@
-# Node modules
-node_modules/
+# Ignore node_modules inside client and server only
 client/node_modules/
 server/node_modules/
 
-# Build output
-dist/
+# Ignore dist or build output
 client/dist/
 server/dist/
 build/
 
-# Environment variables
+# Ignore env files
 .env
 client/.env
 server/.env
 
-# Logs
-*.log
-
-# IDE & OS
+# OS
 .DS_Store
-.vscode/
-*.swp
+Thumbs.db
