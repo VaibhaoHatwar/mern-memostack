@@ -1,19 +1,26 @@
-// Import express using ES module syntax 
-import express from "express";
+// Load environment variables from .env
+import dotenv from "dotenv";
+dotenv.config();
+console.log("🧪 MONGO_URI:", process.env.MONGO_URI); // Debug: check if env is loaded
 
-// Import modular route handler for notes
+// Import express and other modules
+import express from "express";
+import { connectDB } from "./config/db.js";
 import notesRoutes from "./routes/notesRoutes.js";
 
-// Initialize the Express application
+// Initialize express app
 const app = express();
 
-// Define the port (can be replaced later with environment variable)
-const PORT = 5001;
+// Connect to MongoDB
+connectDB();
 
-// Mount notes routes at /api/notes
+// Set server port from .env or default to 5001
+const PORT = process.env.PORT || 5001;
+
+// Notes API routes
 app.use("/api/notes", notesRoutes);
 
-// Start the server and listen on the specified port
+// Start server
 app.listen(PORT, () => {
   console.log(`🚀 Server started on PORT: ${PORT}`);
 });
