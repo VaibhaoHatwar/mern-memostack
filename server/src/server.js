@@ -1,7 +1,6 @@
 // Load environment variables from .env
 import dotenv from "dotenv";
 dotenv.config();
-console.log("🧪 MONGO_URI:", process.env.MONGO_URI); // Debug: check if env is loaded
 
 // Import express and other modules
 import express from "express";
