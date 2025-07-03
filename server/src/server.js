@@ -5,7 +5,7 @@ dotenv.config();
 // Import express and other modules
 import express from "express";
 import { connectDB } from "./config/db.js";
-import notesRoutes from "./routes/notesRoutes.js";
+import memosRoutes from "./routes/memosRoutes.js";
 
 // Initialize express app
 const app = express();
@@ -16,8 +16,8 @@ connectDB();
 // Set server port from .env or default to 5001
 const PORT = process.env.PORT || 5001;
 
-// Notes API routes
-app.use("/api/notes", notesRoutes);
+// Memos API routes
+app.use("/api/memos", memosRoutes);
 
 // Start server
 app.listen(PORT, () => {
