@@ -1,17 +1,17 @@
-# Ignore node_modules inside client and server only
+# Node modules (ignore both frontend and backend)
 client/node_modules/
 server/node_modules/
 
-# Ignore dist or build output
+# Build outputs
 client/dist/
 server/dist/
 build/
 
-# Ignore env files
+# Environment variables
 .env
 client/.env
 server/.env
 
-# OS
+# System files
 .DS_Store
 Thumbs.db
