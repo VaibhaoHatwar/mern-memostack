@@ -14,6 +14,12 @@ connectDB();
 // Parse incoming JSON requests
 app.use(express.json());
 
+// My custome middleware
+app.use((req, res, next) =>{
+  console.log(`Req method is ${req.method} & req url is ${req.url}`);
+  next();
+});
+
 // Memo API routes
 app.use("/api/memos", memosRoutes);
 
