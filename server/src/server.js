@@ -2,32 +2,35 @@ import express from "express";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import memosRoutes from "./routes/memosRoutes.js";
+import rateLimiter from "./middleware/rateLimiter.js";
 
 dotenv.config();
 
 const app = express();
 const PORT = process.env.PORT || 5001;
 
-// Connect to MongoDB
-connectDB();
-
 // Parse incoming JSON requests
 app.use(express.json());
 
-// My custome middleware
-app.use((req, res, next) =>{
-  console.log(`Req method is ${req.method} & req url is ${req.url}`);
-  next();
-});
+// Rate limiter middleware (global)
+app.use(rateLimiter);
 
 // Memo API routes
 app.use("/api/memos", memosRoutes);
 
-// Catch-all 404 for undefined routes
+// 404 Fallback for undefined routes
 app.use("*", (req, res) => {
   res.status(404).json({ message: "Route not found" });
 });
 
-app.listen(PORT, () => {
-  console.log(`🚀 Server is running at http://localhost:${PORT}`);
-});
+// Connect to DB and start server
+connectDB()
+  .then(() => {
+    app.listen(PORT, () => {
+      console.log(`🚀 Server is running at http://localhost:${PORT}`);
+    });
+  })
+  .catch((error) => {
+    console.error("❌ Failed to connect to MongoDB:", error);
+    process.exit(1); // Exit on DB connection failure
+  });
