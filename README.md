@@ -92,7 +92,7 @@ Want to see internal dev learnings, React gotchas, and mindset tips?
 
 ## 📸 Project Preview
 
-> *(Add screenshots here later if needed)*
+> 🚧 UI under construction — screenshots will be added after core features are done
 
 ---
 
