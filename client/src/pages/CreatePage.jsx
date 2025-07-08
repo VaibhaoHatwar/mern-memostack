@@ -75,7 +75,7 @@ const CreatePage = () => {
                   </label>
                   <textarea
                     className="textarea textarea-bordered"
-                    placeholder="Write you memo here..."
+                    placeholder="Write your memo here..."
                     value={content}
                     onChange={(e) => setContent(e.target.value)}
                   />
